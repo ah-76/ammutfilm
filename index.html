@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Insight & Destiny</title>
     
- 
     <style>
 
 		 	 html {
@@ -23,16 +22,32 @@
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: #1e1e1e;
-            background-image: url('ammut1.jpg');  
-            background-size: cover; /* Make the image cover the entire page */
-            background-position: center; /* Center the image */
-            background-repeat: no-repeat; /* Don't repeat the image */
             color: #ffffff;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
             text-align: center;
+            position: relative;
+            overflow: hidden; /* To hide the pseudo-element if it overflows */
+        }
+
+        /* Use a pseudo-element for the background image */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('ammut1.jpg');  
+            background-size: cover; /* Make the image cover the entire page */
+            background-position: center; /* Center the image */
+            background-repeat: no-repeat; /* Don't repeat the image */
+
+            /* Adjust brightness of the background image */
+            filter: brightness(70%);
+            z-index: -1; /* Ensure it's behind the content */
         }
 
         /* Centered Content Styles */
@@ -40,6 +55,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            z-index: 1; /* Ensure it's above the background */
         }
 
         .coming-soon-container h1 {
